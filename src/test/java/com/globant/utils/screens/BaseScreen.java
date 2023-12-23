@@ -2,10 +2,14 @@ package com.globant.utils.screens;
 
 import com.globant.screens.*;
 import com.globant.screens.LoginScreen;
+import com.google.common.collect.ImmutableList;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -86,6 +90,23 @@ public class BaseScreen{
         return this;
     }
 
+    public void swipe(double startXPercentage, double endXPercentage, double cenerYPercentage){
+        Dimension size = driver.manage().window().getSize();
+        int startX = (int)(size.width * startXPercentage);
+        int endX = (int)(size.width * endXPercentage);
+        int centerY = (int) (size.height * cenerYPercentage);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO,PointerInput.Origin.viewport(),startX,centerY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(300),PointerInput.Origin.viewport(),endX,centerY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(ImmutableList.of(swipe));
+    }
 //    This could be use if I decide to user softAssert instead of Assert,
 //    for use it in the AfterTest to get the log of the assertions
 //    public void validateAssertions(){

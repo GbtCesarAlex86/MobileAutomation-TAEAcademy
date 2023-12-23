@@ -17,7 +17,8 @@ public class SignUpTab extends LoginScreen {
     private static final String CONFIRM_PASSWORD_INPUT = "new UiSelector().description(\"input-repeat-password\")";
     private static final String SIGNUP_BUTTON = "new UiSelector().text(\"SIGN UP\")";
     private static final String SIGNUP_CONFIRMATION = "new UiSelector().text(\"You successfully signed up!\")";
-
+    private static final String OK_BUTTON = "new UiSelector().text(\"OK\")";
+    private static final String LOGIN_TAB = "new UiSelector().description(\"button-login-container\")";
 
     @AndroidFindBy(uiAutomator = EMAIL_INPUT)
     private WebElement emailInput;
@@ -33,6 +34,12 @@ public class SignUpTab extends LoginScreen {
 
     @AndroidFindBy(uiAutomator = SIGNUP_CONFIRMATION)
     private WebElement signUpConfirmationText;
+
+    @AndroidFindBy(uiAutomator = LOGIN_TAB)
+    private WebElement logInTab;
+
+    @AndroidFindBy(uiAutomator = OK_BUTTON)
+    WebElement okBtn;
 
     public void enterEmail(String email){
         emailInput.sendKeys(email);
@@ -52,5 +59,6 @@ public class SignUpTab extends LoginScreen {
 
     public void verifySignUpProcessIsCompleted() {
         Assert.assertTrue(isElementDisplayed(signUpConfirmationText), "SignUp process not completed");
+        okBtn.click();
     }
 }

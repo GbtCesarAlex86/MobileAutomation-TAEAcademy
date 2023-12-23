@@ -1,28 +1,23 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="My Suite">
-<!--    <test name="Navigation Test">-->
-<!--        <classes>-->
-<!--            <class name="com.globant.tests.MenuBarNavigationTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Sign Up Test">-->
-<!--        <classes>-->
-<!--            <class name="com.globant.tests.SignUpTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-    <test name="Log In Test">
+    <test name="Navigation Test">
         <classes>
-            <class name="com.globant.tests.LogInTest">
-                <methods>
-                    <include name="signUpTest"/>
-                    <include name="logInTest"/>
-                </methods>
-            </class>
+            <class name="com.globant.tests.MenuBarNavigationTest"/>
         </classes>
     </test>
-<!--    <test name="">-->
-<!--        <classes>-->
-<!--            <class name=""></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sign Up Test">
+        <classes>
+            <class name="com.globant.tests.SignUpTest"/>
+        </classes>
+    </test>
+    <test name="Log In Test">
+        <classes>
+            <class name="com.globant.tests.LogInTest"/>
+        </classes>
+    </test>
+    <test name="Swipe Cards Test">
+        <classes>
+            <class name="com.globant.tests.SwipeCardsTest"></class>
+        </classes>
+    </test>
 </suite>

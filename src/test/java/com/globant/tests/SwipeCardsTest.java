@@ -21,7 +21,6 @@ public class SwipeCardsTest extends BaseTest {
     @Test
     public void SwipeCards(ITestContext context){
         SwipeScreen swipeScreen = (SwipeScreen) context.getAttribute("swipeScreen");
-        swipeScreen.swipeCardToLeft();
-        swipeScreen.swipeCardToRight();
+        swipeScreen.swipeCards();
     }
 }
